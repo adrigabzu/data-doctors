@@ -1,0 +1,27 @@
+---
+title: "Data Doctors"
+output: 
+    html_document:
+      include:
+        before_body: header.html
+        # toc: TRUE
+        # toc_float: TRUE
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+htmltools::tagList(rmarkdown::html_dependency_font_awesome())
+```
+
+    
+Cameron, some ideas on what to put here?
+
+# Workshops
+
+
+
+##1. [Getting started](workshops/1_getting_started/t_getting_started.html)
+##2. [R basics](workshops/t_r_basics.html)
+##3. [Data wrangling](workshops/t_data_wrangling.html)
+##4. [Visualisation and plotting](workshops/t_plotting.html)

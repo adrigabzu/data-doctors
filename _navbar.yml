@@ -1,0 +1,49 @@
+title: "Data Doctors"
+type: default
+left:
+  - text: "Overview"
+    icon: fa-home
+    href: index.html
+  - text: "Tutorials"
+    icon: fa-terminal
+    menu:
+      - text: "Getting Started"
+        href: workshops/1_getting_started/t_getting_started.html
+      - text: "R basics"
+        href: (workshops/t_r_basics.html
+      - text: "Data wrangling"
+        href: workshops/t_data_wrangling.html
+      - text: "Visualisation and plotting"
+        href: page-b.html
+#      - text: "Page B"
+#        href: page-b.html
+#      - text: "Page B"
+#        href: page-b.html
+        
+#        - text: "---------"
+#        - text: "Heading 2"
+#        - text: "Page C"
+#          href: page-c.html
+#        - text: "Page D"
+#          href: page-d.html
+#  - text: "Slides"
+#    icon: fa-graduation-cap
+#    menu:
+#      - text: "Page A"
+#        href: workshops/1_getting_started/s_getting_started.html
+#      - text: "Page B"
+#        href: page-b.html
+
+right:
+#  - text: "by Adrian G. Zucco"
+#    href: http://www.adrianzucco.com
+  - icon: fa-github fa-lg
+    href: http://github.com/adrigabzu
+  - icon: fa-slack fa-lg
+    href: https://data-doctors-chip.slack.com
+  - text: "CHIP"
+    icon: fa-user-md fa-lg
+    href: https://www.chip.dk/
+  - text: "PERSIMUNE"
+    icon: fa-bullseye fa-lg
+    href: http://www.persimune.dk/

@@ -1,0 +1,7 @@
+name: "Data Doctors Workshops"
+output_dir: "."
+output:
+  html_document:
+    theme: simplex
+    highlight: kate
+    css: 'styles.css'
