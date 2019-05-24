@@ -12,16 +12,26 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 
 htmltools::tagList(rmarkdown::html_dependency_font_awesome())
+
 ```
 
-    
-Cameron, some ideas on what to put here?
 
-# Workshops
+Community of researchers at Rigshospitalet interested in Data Science.
 
+# Why should I learn Data Science?
+
+![](./img/DS_venn_short.png#smaller)
+*Author: [Natalia Bilenko](http://berkeleysciencereview.com/how-to-become-a-data-scientist-before-you-graduate/), modified from [Drew Conway](http://drewconway.com/zia/2013/3/26/the-data-science-venn-diagram)*
+
+Due to technological progress and availability of computing power, more complex and bigger data is collected every day. This new paradigm shift challenges traditional methods to analyse data so new tools are necessary to assess hypotheses and learn from vast amounts of information. Thankfully, computer science is more accessible through a community effort to bridge programming languages and democratise data science.
+
+The main goal of the following workshops is to **provide those "hacking skills" to take your research to a new level assuming no prior programming experience**. The tool of choice will be R since it is recent improvements in the language and its long tradition in statistical and biological analysis.
 
 
 ##1. [Getting started](workshops/1_getting_started/t_getting_started.html)
-##2. [R basics](workshops/t_r_basics.html)
+
+This tutorial will guide you to install and set up R and Rstudio in different platforms.
+
+##2. [R basics](workshops/2_r_basics/t_r_basics.html)
 ##3. [Data wrangling](workshops/t_data_wrangling.html)
 ##4. [Visualisation and plotting](workshops/t_plotting.html)

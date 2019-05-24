@@ -1,0 +1,28 @@
+---
+title: "R basics"
+author: "by Adrian G. Zucco"
+output: 
+    html_document:
+        theme: simplex
+        highlight: zenburn
+        toc: TRUE
+        toc_float: TRUE
+        toc_depth: 2
+        number_sections: TRUE
+        css: '../../styles.css'
+        df_print: paged
+        include:
+          after_body: ./img/footer.html
+        # code_folding: hide
+---
+
+```{r, echo=FALSE}
+knitr::opts_chunk$set(error = TRUE, fig.align="center")
+```
+
+<style>
+body {
+text-align: justify}
+</style>
+
+

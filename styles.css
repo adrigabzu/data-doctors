@@ -4,7 +4,7 @@ h1.title {
 }
 
 h4.author {
-  font-size: 40px;
+  /* font-size: 40px; */
   text-align: right;
 }
 
@@ -24,9 +24,23 @@ img[src*='#smaller'] {
     margin: auto;
 }
 
+img[src*='#medium'] {
+  width: 600px;
+    display: block;
+    margin: auto;
+}
+
 body, td {
    font-size: 14px;
 }
+
+img + em {
+    font-style: normal;
+    display: inherit;
+    text-align: center;
+    font-size: 90%;
+}
+
 code{
   font-size: 14px;
 }

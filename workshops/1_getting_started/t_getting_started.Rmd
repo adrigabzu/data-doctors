@@ -20,6 +20,12 @@ output:
 knitr::opts_chunk$set(error = TRUE, fig.align="center")
 ```
 
+<style>
+body {
+text-align: justify}
+</style>
+
+
 
 You want to start learning about Data Science but the information you find online makes you feel like:
 
