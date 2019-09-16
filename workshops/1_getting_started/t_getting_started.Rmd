@@ -26,7 +26,6 @@ text-align: justify}
 </style>
 
 
-
 You want to start learning about Data Science but the information you find online makes you feel like:
 
 <!-- ![](./img/noidea.png) -->
@@ -39,13 +38,15 @@ This tutorial will guide you to install and set up R and Rstudio in different pl
 
 # Install R and Rstudio
 
+> **NOTE: **  R is the programming languange and Rstudio is an integrated development enviroment to interact with it.
+
 ## Locally in your personal computers
 
-First [download R from its official repository](https://mirrors.dotsrc.org/cran/) and select Linux/Mac/Windows according to your system. For the case of Windows computers click on the __base__ version. Check that the version you are downloading is higher than 3.5. Don't move to the next step util R is sucessfully installed.
+First [download R from its official repository](https://mirrors.dotsrc.org/cran/) and select Linux/Mac/Windows according to your system. For the case of Windows computers click on the __base__ version. Check that the version you are downloading is higher than 3.5. Don't move to the next step until R is sucessfully installed.
 
 Rstudio can be found in the [download section of the official website](https://www.rstudio.com/products/rstudio/download/#download).
 
-## Locally in RegionH computers
+## Locally in RegionH computer
 
 Both R and Rstudio are available through "Softwareshoppen". To find R click on **R** under the search bar and scroll down, it should be placed quite on top:
 
@@ -130,7 +131,7 @@ install.packages("openxlsx", "psych")
 
 # More information
 
-The main purpose of the following workshops will be to build the conceptual framework that would help you to learn and analyse data with the help of "cheat sheets" that sumarise most of the important information or functions. For the case of Rstudio you can check the following:
+The main purpose of the following workshops will be to build the conceptual framework that would help you to learn and analyse data with the help of "cheat sheets" that sumarise most of the important information and functions. For the case of Rstudio you can check the following:
 
 + [Rstudio cheatsheet](https://github.com/rstudio/cheatsheets/raw/master/rstudio-ide.pdf)
 

@@ -4,7 +4,7 @@ left:
   - text: "Overview"
     icon: fa-home
     href: index.html
-  - text: "Tutorials"
+  - text: "Workshops"
     icon: fa-terminal
     menu:
       - text: "Getting Started"
