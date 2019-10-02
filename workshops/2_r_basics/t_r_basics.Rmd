@@ -260,6 +260,7 @@ You can compare your results based on the provided charts by the [European Socie
 + Create an example of a patient as a vector or a list
 + If you feel adventurous create multiple examples and run them by using a loop or even better with the `apply()` family
 
+
 <!---
 
 factor?
