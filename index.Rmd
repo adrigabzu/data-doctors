@@ -35,7 +35,7 @@ The following workshops are meant to **provide a basic set of skills assuming no
 
 How to install and set up R and Rstudio in your personal computer, RegionH computers and Computerome.
 
-###2. [Programming and R basics](workshops/2_r_basics/t_r_basics.html)
+###2. [Basic elements in R](workshops/2_r_basics/t_r_basics.html)
 
 *Work in progress*
 
