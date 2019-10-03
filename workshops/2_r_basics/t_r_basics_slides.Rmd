@@ -48,7 +48,7 @@ text-align: justify}
 --- 
 
 
-> Have you ever had only 5 minutes to hack into a high security intranet to stop nuclear missiles from hitting ground due to some cyber terrorist activity?
+> Have you ever had only 5 minutes to hack into a high-security intranet to stop nuclear missiles from hitting the ground due to some cyber-terrorist activity?
 
 <img src="./img/hacker.gif" width="600"/>
 
@@ -65,14 +65,14 @@ text-align: justify}
 - After using the same code over and over you end up memorising it (hopefully).
 - Fail fast and often for cheap tasks. Set cheap tests for expensive tasks.
 
-## A dark souless void with a blinking cursor
+## A dark soulless void with a blinking cursor
 
 <img src="./img/GUI_CLI.jpg" width="400" alt="GUI vs CLI"/>
 
 ## R (CLI) and Rstudio (as "GUI")
 
-+ `Rstudio` as a GUI is also called Integrated Development enviroment (IDE). It has a CLI integrated under the `Terminal` tab.
-+ `R` is running on the `Console` tab in Rstudio. Which is a CLI or terminal where R as program has been executed.
++ `Rstudio` as a GUI is also called Integrated Development Environment (IDE). It has a CLI integrated under the `Terminal` tab.
++ `R` is running on the `Console` tab in Rstudio. Which is a CLI or terminal where R as a program has been executed.
 
 > See the [Getting Started](../1_getting_started/t_getting_started.html) for more information
 
@@ -119,7 +119,7 @@ Other mathematical functions are available such as `exp(x)`, `log(x)`, `sqrt(x)`
 |--------|----------------------------------------------------------|
 | `#`    | Comment code, it won't execute up to the end of the line |
 | `?`    | Get help. e.g `?typeof`                                  |
-| `=`    | Left assigment                                           |
+| `=`    | Left assignment                                           |
 | `<-`   | Left assignment, binary                                  |
 | `->`   | Right assignment, binary                                 |
 | `$`    | List subset, binary                                      |
@@ -135,7 +135,7 @@ Other mathematical functions are available such as `exp(x)`, `log(x)`, `sqrt(x)`
 | 2          | Matrix / `matrix()`     | Data frame / `data.frame()`    |
 | >2         | Array  / `array()`     | Data frame / `data.frame()`    |
 
-**Factors** are special class of vector that can only contain predefined values. They represent categorical data.
+**Factors** are a special class of vector that can only contain predefined values. They represent categorical data.
 
 ## Indexing
 
@@ -144,10 +144,9 @@ Imagine that:
 - `x` is a data structure with multiple elements
 - `i` is an index or position in one dimension. It can be a number e.g. 1 (for the first position) or character if positions are named
 - `j` is another index for another dimension
-- `a` is a element name such a column name in a dataframe
+- `a` is an element name such a column name in a dataframe
 
 > NOTE: in R vectors start on 1 but in other languages such as Python it can be 0
-
 
 ```r
 # For vectors
@@ -176,7 +175,7 @@ x$a
 An object x type...
 
 - can be tested with `is._(x)` where `_` can be any of the available types. It returns a logical.
-- can be coerced to other type if possible using `as._(x)`
+- can be coerced to another type if possible using `as._(x)`
 
 ## Missing values
 
@@ -221,7 +220,7 @@ for ( element in sequence ) {
 There are extra controls for the loops:
 
 + `break` : exit the current loop that is being executed
-+ `next` : starts the next iteration immediatly from the beginning of the current loop.
++ `next` : starts the next iteration immediately from the beginning of the current loop.
 
 ## Special functions in R for looping
 
@@ -231,7 +230,7 @@ These are functions that apply a function (`FUN`) to each element of a different
 + `lapply(X, FUN, ...)` where x can also be list and it returns a list.
 + `sapply(X, FUN, ...)` where x can also be a list but it returns a vector.
 
-> This are more efficient and fast ways to iterate in R. Always use if possible.
+> These are more efficient and fast ways to iterate in R. Always use if possible.
 
 ## Functions
 
@@ -249,7 +248,7 @@ myfunction <- function ( argument1 = value1, argument2 = value2, ... ) {
 
 ## Object-oriented programming (OOP) vs Functional programming
 
-Different stlyes of building the structure and elements of computer programs. Inspired from Wikipedia:
+Different styles of building the structure and elements of computer programs. Inspired from Wikipedia:
 
 - **Object-oriented programming (OOP)** is based on the concept of **"objects"** (often known as classes), which **can contain data**, in the form of fields (often known as **attributes** or properties), and code, in the form of procedures (often known as methods).
 - **Functional programming (FP)** treats computation as the evaluation of mathematical **functions** and **avoids changing-state and mutable data**. The output value of a function depends only on its arguments, so calling a function with the same value for an argument always produces the same result.
@@ -290,6 +289,7 @@ You can compare your results based on the provided charts by the [European Socie
 + Use if/else statements for the different cases
 + Create an example of a patient as a vector or a list
 + If you feel adventurous create multiple examples and run them by using a loop or even better with the `apply()` family
+
 
 <!---
 

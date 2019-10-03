@@ -37,8 +37,6 @@ How to install and set up R and Rstudio in your personal computer, RegionH compu
 
 ###2. [Basic elements in R](workshops/2_r_basics/t_r_basics.html)
 
-*Work in progress*
-
 ###3. [Data wrangling](workshops/t_data_wrangling.html)
 
 *Work in progress*
