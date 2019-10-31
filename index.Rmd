@@ -33,13 +33,11 @@ The following workshops are meant to **provide a basic set of skills assuming no
 
 ###1. [Getting started](workshops/1_getting_started/t_getting_started.html)
 
-How to install and set up R and Rstudio in your personal computer, RegionH computers and Computerome.
+> Be sure you have R and Rstudio in your personal computer, RegionH computers or Computerome.
 
 ###2. [Basic elements in R](workshops/2_r_basics/t_r_basics.html)
 
-###3. [Data wrangling](workshops/t_data_wrangling.html)
-
-*Work in progress*
+###3. [Data wrangling](workshops/3_data_wrangling/t_data_wrangling.html)
 
 ###4. [Visualisation and plotting](workshops/t_plotting.html)
 
