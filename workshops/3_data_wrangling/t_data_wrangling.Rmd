@@ -28,11 +28,11 @@ text-align: justify}
 
 <!-- <img src="./img/lego.jpg" width="400"/> -->
 
-Data like the world, can seem chaotic. In order to ask questions we have to transform the data into useful structures that the we and the computer can interact with.
+Data like the world can seem chaotic. For inquire we have to transform the data into useful structures that we and the computer can interact with.
 
 ![](https://thumbs.gfycat.com/SickLeftAfricanfisheagle-size_restricted.gif)
 
-In this workshop we will be using the the [`tidyverse` library](https://www.tidyverse.org/), a collection of R packages that acts as an extra layer of interaction between base R and the user without significant impacts in performance. If you haven't installed it, do it by copying the following line in the `Console` panel after the `>`: 
+In this workshop, we will be using the [`tidyverse` library](https://www.tidyverse.org/), a collection of R packages that acts as an extra layer of interaction between base R and the user without significant impacts in performance. If you haven't installed it, do it by copying the following line in the `Console` panel after the `>`: 
 
 ```r
 install.packages("tidyverse")
@@ -49,6 +49,12 @@ Above you can see all the libraries contained in tidyverse to be loaded. Some ot
 install.packages(c("readxl", "psych", "skimr"))
 ```
 
+Please download the following cheat sheets as guides:
+
++ [Data Import Cheat Sheet](https://github.com/rstudio/cheatsheets/raw/master/data-import.pdf)
++ [Data Transformation Cheat Sheet](https://github.com/rstudio/cheatsheets/raw/master/data-transformation.pdf)
++ [Data Visualization Cheat Sheet](https://github.com/rstudio/cheatsheets/raw/master/data-visualization-2.1.pdf)
+
 # Importing data into R
 
 ## The source of the data
@@ -57,15 +63,15 @@ It is recommended to [take care of your folder structure](https://journals.plos.
 
 1. Create an empty file that will contain your script with the extension `.R` in the end.
 2. Execute the script using Rstudio.
-3. To know where your current R is looking at execute `getwd()`
+3. To know where your current R session is executed, use `getwd()`
 
-> Download the following files 
+> Download the following files *(right-click > Save link as...)* [Number of deaths by cause](https://raw.githubusercontent.com/adrigabzu/data-doctors/master/workshops/3_data_wrangling/material/annual-number-of-deaths-by-cause.csv) and [Healthcare expenditure as percentage of GDP](https://raw.githubusercontent.com/adrigabzu/data-doctors/master/workshops/3_data_wrangling/material/total-healthcare-expenditure-as-share-of-national-gdp-by-country.csv)
 
 Data extracted from [Our world in data](https://ourworldindata.org/causes-of-death#causes-of-death-in-recent-decades)
 
 ## The path to the data
 
-Computer locations are structured as layers one contained in the other. In order to navigate the folder structure we have to know that:
+Computer locations are structured as layers one contained in the other. To navigate the folder structure we have to know that:
 
 ![](https://thumbs.gfycat.com/ForthrightCrazyCirriped-size_restricted.gif)
 
@@ -74,11 +80,11 @@ Computer locations are structured as layers one contained in the other. In order
 -  `/` root (usually where the important files for the system are located)
 - `~/` home directory where you can #hygge
 
- You can change this locations by giving full directions from the root or relative to the current folder using `setwd("./directions/tofolder/inside")`
+ You can change this location by giving full directions from the root or relative to the current folder using `setwd("./directions/tofolder/inside")`
 
 ## The nature of the data
 
-Data can come in multiple formats. Look at the file extension of your data file or have a look in a text editor how it is formated. Look at the middle column of first page of the [Data Import Cheat Sheet](https://github.com/rstudio/cheatsheets/raw/master/data-import.pdf). Load the data into a variable such as `my_data`.
+Data can come in multiple formats. Look at the file extension of your data file or have a look in a text editor how it is formated. Look at the middle column of the first page of the [Data Import Cheat Sheet](https://github.com/rstudio/cheatsheets/raw/master/data-import.pdf). Load the data into a variable such as `my_data`.
 
 ## Data frames vs Tibbles
 
@@ -100,14 +106,14 @@ When importing tables, the type of data in each column is guessed but it can als
 
 Column types can be reformatted at any time.
 
-> Whenever is possible avoid spaces in your column names
+> Try to avoid spaces in your column names
 
 # Long vs wide datasets
 
-Tables can be found in mainly designs:
+Tables can be mainly found in two designs:
 
-+ In **Wide format** all observations for each sample or subject will be contained in one row accross multiple columns
-+ In **Long format** (or tidy) each observation is in its own row, and each variable type in its own column. There are multiple rows for each sample or subject.
++ In **Wide format** all observations for each sample or subject will be contained in one row across multiple columns
++ In **Long format** (or tidy) each observation is in its row, and each variable type in its column. There are multiple rows for each sample or subject.
 
 In the middle column, page 2 of the [Data Import Cheat Sheet](https://github.com/rstudio/cheatsheets/raw/master/data-import.pdf) you can find how to tidy your data to the suitable format. In short:
 
@@ -118,7 +124,7 @@ In the middle column, page 2 of the [Data Import Cheat Sheet](https://github.com
 
 ![](http://www.abandonia.com/files/games/630/Pipe%20Mania_1.png)
 
-One of the best enhancenments in R are pipes. They can be used to concatenate commands using `%>%`. This will pass the result of one function to as the first argument of the next function. In Windows pipes can also be introduced by `Ctrl + shift + M`. Example:
+One of the best enhancements in R is pipes. They can be used to concatenate commands using `%>%`. This will pass the result of one function as the first argument of the next function. In Windows pipes can also be introduced by `Ctrl + shift + M`. Example:
 
 ```r
 myresults <- mydata %>%
@@ -132,9 +138,10 @@ There are many things you can do with your dataset. A suggested way of operating
 
 1. Clarify your questions or idea of what you want to see
 2. Check the [Data Transformation Cheat Sheet](https://github.com/rstudio/cheatsheets/raw/master/data-transformation.pdf) to find the functions you need to answer your questions
-3. If the cheat sheet is not enough search your problem on internet by ading `tidyverse`, `dplyr` or `R` at the end of your query
+3. If the cheat sheet is not enough, look up your problem on the internet by adding `tidyverse`, `dplyr` or `R` at the end of your query
 
-A brief summary of things you can do:
+A very brief summary of things you can do:
+
 + `select()` columns
 + `filter()` values in columns
 + `arrange()` your data in a ascending or `arrange(desc())` in descending order
@@ -144,48 +151,68 @@ A brief summary of things you can do:
 
 ## Group your data
 
-Considering that your data is in long format you can group your observations based on a specific column using `group_by(column_name)`. This will allow you to perform operations and run functions per group instead of the whole dataset.
+Considering that your data is in long format you can group your observations based on a specific column using `group_by(column_name)`. This will allow you to perform operations and run functions per group instead of the whole dataset. Check page 1 of the [Data Transformation Cheat Sheet](https://github.com/rstudio/cheatsheets/raw/master/data-transformation.pdf)
 
 ## Combine datasets
 
-Combining tables is inspired on SQL. 
+| dplyr                        | Description                            | SQL                                          |
+|------------------------------|----------------------------------------|----------------------------------------------|
+| `inner_join(x, y, by = "col")` | Keeps only common rows between x and y | SELECT * FROM x INNER JOIN y USING (col)       |
+| `left_join(x, y, by = "col")`  | Keeps all rows in x                    | SELECT * FROM x LEFT OUTER JOIN y USING (col)  |
+| `right_join(x, y, by = "col")` | Keeps all rows in y                    | SELECT * FROM x RIGHT OUTER JOIN y USING (col) |
+| `full_join(x, y, by = "col")`  | Keeps all rows in x or y               | SELECT * FROM x FULL OUTER JOIN y USING (col)   |
+
+![Extracted from [R for Data Science](https://r4ds.had.co.nz/relational-data.html#mutating-joins)](https://d33wubrfki0l68.cloudfront.net/aeab386461820b029b7e7606ccff1286f623bae1/ef0d4/diagrams/join-venn.png)
+
+When merging tables, common column names will be used automatically. To specify a common column to perform the joining add `, by = "column_with_same_name")`. If column names don't match then use `, by = c("col_in_x" = "col_in_y")`. Preferably change the column names with `rename()` to avoid issues. Check page 2 of the [Data Transformation Cheat Sheet](https://github.com/rstudio/cheatsheets/raw/master/data-transformation.pdf)
 
 ## Summarise your data
 
-Custom summaries reports can be created by using `summarise()`. Despite being flexible, this requires a detailed specification of the types of summaries we want to see such as mean, median, maximum values, etc. Packages like `skimr` or `psych` provide a set of out of the box summary statistics for your data. Examples based on the built in dataset `esoph`:
+Custom summaries reports can be created by using `summarise()`. Despite being flexible, this requires a detailed specification of the types of summaries we want to see such as mean, median, maximum values, etc. Packages like `skimr` or `psych` provide a set of out of the box summary statistics for your data. Examples based on the built-in dataset `esoph`:
 
 ```{r echo=TRUE, message=TRUE, warning=F, paged.print=TRUE, results='hold',collapse=TRUE}
 library(skimr)
 
-esoph %>% skim() %>% print()
+# Built-in dataset: The Effect of Vitamin C on Tooth Growth in Guinea Pigs
+ToothGrowth %>% skim() %>% print()
 
 ```
 
 ```{r echo=TRUE, message=TRUE, warning=F, paged.print=TRUE, results='hold',collapse=TRUE}
 library(psych)
 
-esoph %>% describe()
+ToothGrowth %>% describe()
 
 ```
 
 # Basic data visualization
 
-Finally 
+Despite not the topic of this workshop but visualising your data with `ggplot2` can be achieved by adding some extra lines to your pipe. To achieve this consider:
 
++ The [Data Visualization Cheat Sheet](https://github.com/rstudio/cheatsheets/raw/master/data-visualization-2.1.pdf) is one of the main tools to find which kind of plot you want to make and how to do it.
++ Start by adding ```%>% ggplot(aes(``` and define your `x= your_column_x`, `y= your_column_y`, `color= your_column_color` to color lines or `fill= your_column_color` to fill shapes with color.
++ After using the `ggplot(aes())` function, layers are added by piping with `+` instead of `%>%`
+
+An example could be:
+```{r echo=TRUE, message=TRUE, warning=F, paged.print=TRUE, results='hold',collapse=TRUE}
+# Built-in dataset: The Effect of Vitamin C on Tooth Growth in Guinea Pigs
+ToothGrowth %>%
+  # Turn numeric dose into categories
+  mutate(dose = factor(dose)) %>%
+  ggplot(aes(x = dose, y = len, fill = supp)) + 
+  # Non-stacked barplots
+  geom_col(position = position_dodge()) +
+  # change visual template and colors
+  theme_minimal() + scale_fill_brewer(palette="Set1")
+```
+
+**Have fun and play around =D**
 
 ## Bibliography
 
++ [Cheat sheets](https://rstudio.com/resources/cheatsheets/)
 + [R for Data Science](https://r4ds.had.co.nz/)
 + [Introduction to Open Data Science](https://ohi-science.org/data-science-training/)
++ [Noble, W. S. A Quick Guide to Organizing Computational Biology Projects. PLOS Computational Biology 5, e1000424 (2009)](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1000424)
 
-
-<!---
-
-factor?
-logical
-NULL
-
-as.something
-
--->
 

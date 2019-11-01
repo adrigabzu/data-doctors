@@ -3,9 +3,9 @@ left:
   - text: "Data doctors"
     icon: fa-home fa-lg
     href: ../../index.html
-  - text: "Slides"
-    icon: fa-graduation-cap
-    href: ./t_data_wrangling_slides.html
+#  - text: "Slides"
+#    icon: fa-graduation-cap
+#    href: ./t_data_wrangling_slides.html
 
 right:
 #  - text: "by Adrian G. Zucco"
