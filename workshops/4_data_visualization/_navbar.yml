@@ -1,0 +1,22 @@
+type: default
+left:
+  - text: "Data doctors"
+    icon: fa-home fa-lg
+    href: ../../index.html
+#  - text: "Slides"
+#    icon: fa-graduation-cap
+#    href: ./t_data_wrangling_slides.html
+
+right:
+#  - text: "by Adrian G. Zucco"
+#    href: http://www.adrianzucco.com
+  - icon: fa-github fa-lg
+    href: https://github.com/adrigabzu/data-doctors
+  - icon: fa-slack fa-lg
+    href: https://data-doctors-chip.slack.com
+  - text: "CHIP"
+    icon: fa-user-md fa-lg
+    href: https://www.chip.dk/
+  - text: "PERSIMUNE"
+    icon: fa-bullseye fa-lg
+    href: http://www.persimune.dk/

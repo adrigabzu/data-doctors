@@ -1,0 +1,198 @@
+---
+title: "Data visualization in R"
+author: "by Adrian G. Zucco"
+output: 
+    html_document:
+        code_folding: "hide"
+        theme: simplex
+        highlight: zenburn
+        toc: TRUE
+        toc_float: TRUE
+        toc_depth: 2
+        number_sections: TRUE
+        css: '../../styles.css'
+        df_print: tibble
+        include:
+          after_body: ./img/footer.html
+editor_options:
+  chunk_output_type: console
+---
+
+```{r, echo=FALSE}
+knitr::opts_chunk$set(error = TRUE, fig.align="center")
+```
+
+<style>
+body {
+text-align: justify}
+</style>
+
+<!-- <img src="./img/lego.jpg" width="400"/> -->
+
+Plots are the fastest way to show a result or to tell a story...
+
+![Based on the  [WSJ graphics work on vaccination](https://flowingdata.com/2015/02/19/impact-of-vaccines-throughout-history/) and [The inevitability of data visualization criticism](https://www.infoworld.com/article/3048315/the-inevitability-of-data-visualization-criticism.html)](https://images.techhive.com/images/article/2016/03/which-is-best-100652414-large970.idge.png)
+
+Or misguide and promote Fake News...
+
+<img src="https://callingbullshit.org/tools/img/stand_your_ground.png" width="300"/>
+From [Calling Bullshit](https://callingbullshit.org/tools/tools_misleading_axes.html)
+
+Make art in R...
+![https://www.data-to-art.com/](https://www.data-to-art.com/img/SIZE400/AS_harmonograph.png)
+From [Data to art in R](https://www.data-to-art.com/)
+
+Traditionally, scientists have mainly focused on data and ignored proper visualization practices. Nowadays, with bigger datasets, efficient visualization is needed not only to understand your data but to also convey results into a digestible snapshot.
+
+> Recommended [Why scientists need to be better at data visualization](https://www.knowablemagazine.org/article/mind/2019/science-data-visualization)
+
+
+![](http://datascibc.org/Data-Science-for-Docs/img/better_plots.gif)
+From [Data Science for Docs](http://datascibc.org/Data-Science-for-Docs/)
+
+# Libraries and datasets
+
+In this workshop, apart from [`tidyverse` library](https://www.tidyverse.org/) which includes `ggplot2` we will have a look at heatmaps and correlation plots. If you haven't installed it, do it by copying the following line in the `Console` panel after the `>`: 
+
+```r
+install.packages(c("tidyverse", "corrplot"))
+```
+Hit `Enter`, the download and installation process should start. When finished, load the libraries by executing:
+
+```{r echo=TRUE,message=FALSE, warning=FALSE, collapse=TRUE, paged.print=FALSE, results='asis'}
+library("tidyverse")
+```
+
+## Material to download...
+
++ [Data Visualization Cheat Sheet](https://github.com/rstudio/cheatsheets/raw/master/data-visualization-2.1.pdf)
++ [Hepatitis dataset](https://raw.githubusercontent.com/adrigabzu/data-doctors/master/workshops/4_data_visualization/material/clean_hepatitis.csv).
+Data from adapted from [UCI Machine Learning repository](https://archive.ics.uci.edu/ml/datasets/Hepatitis)
+
+> And download the following files *(right-click > Save link as...)* 
+
+# Basic data visualization
+
+Despite not the topic of this workshop but visualising your data with `ggplot2` can be achieved by adding some extra lines to your pipe. To achieve this consider:
+
++ The [Data Visualization Cheat Sheet](https://github.com/rstudio/cheatsheets/raw/master/data-visualization-2.1.pdf) is one of the main tools to find which kind of plot you want to make and how to do it.
++ After the variable that contains your table add ```%>% ggplot(aes(``` and define your `x= your_column_x`, `y= your_column_y`, `color= your_column_color` to color lines, `fill= your_column_color` to fill shapes with color or `size= your_column_size`.
++ After using the `ggplot(aes())` function, layers are added by piping with `+` instead of `%>%`
+
+## An example
+
+Use the `ToothGrowth` dataset (remember you can use `as_tibble()` to see the dataframe):
+```r
+# Built-in dataset: The Effect of Vitamin C on Tooth Growth in Guinea Pigs
+?ToothGrowth
+as_tibble(ToothGrowth)
+```
+Manipulate your data here and there to have a nice format for plotting. Group the observations and calculate summary statistics such as counts, mean and standard deviation per group:
+```{r echo=TRUE, message=TRUE, warning=F, paged.print=TRUE, results='hold', collapse=TRUE}
+# To refresh some data wrangling steps from the previous workshop
+TG_summarised <- ToothGrowth %>% 
+  # Group the data
+  group_by(supp, dose = factor(dose)) %>% add_tally() %>% 
+  # Calculate mean, sd y number of samples per group
+  summarise(len_mean = mean(len), sd = sd(len), n = max(n)) 
+```
+Unleash the ggplot magic:
+```{r echo=TRUE, message=TRUE, warning=F, paged.print=TRUE, results='hold',collapse=TRUE}
+# An example of barplot in ggplot
+TG_summarised %>% 
+  ggplot(aes(x = dose, y = len_mean, fill = supp)) + 
+  # Non-stacked barplots
+  geom_bar(stat = "identity") +
+  # Add values inside the bars
+  geom_text(aes(label = len_mean), color = "white", vjust = 1, size = 4) +
+  # Add the error bars
+  geom_errorbar(aes(ymin = len_mean - sd, ymax = len_mean + sd), 
+                position = position_dodge(.9), width = 0.3) +
+  # Split barplots by supp and remove the legend
+  facet_wrap( ~ supp) + guides(fill = "none") +
+  # change visual template and colors
+  theme_minimal() + scale_fill_brewer(palette = "Set1")
+```
+
+Try yourself doing, for example, a boxplot or violin plot based on the original dataset `ToothGrowth` which is already available in R.
+
+> Tip: As seen in the previous code you might have to turn some continous variables into factors.
+
+# Many options 
+
+![](https://www.data-to-viz.com/img/poster/poster_big.png)
+
+> Check the interactive version with links to R code at https://www.data-to-viz.com/ 
+
+# Beyond ggplot2
+
+Computers like numbers, characters or others type of data can be confusing for some libraries. This means that sometimes we have to turn our data into a numeric matrix. If our we have characters columns these have to be transformed into a meaningful value or factorised. If they are factorised they can be converted into a numeric type.
+
+Load the Hepatitis dataset and mutate the colums if they are of character type into factors:
+```{r echo=TRUE, message=TRUE, warning=F, paged.print=TRUE, results='hold',collapse=TRUE}
+clean_hepatitis <- read_csv("./material/clean_hepatitis.csv")
+
+clean_hepatitis <- clean_hepatitis %>% mutate_if(is.character, as.factor)
+```
+
+Let's make 2 matrices, one with only the categorical variables and another with the continuous values to facilitate comparisons. This can be done by selecting the columns of the format of interest and coercing them into a matrix `as.matrix()`. If columns are in factor format they have to be all mutated into `as.numeric`:
+
+```{r echo=TRUE, message=TRUE, warning=F, paged.print=TRUE, results='hold',collapse=TRUE}
+# Selec
+hep_mat_factors <- clean_hepatitis %>% 
+                               select_if(is.factor) %>% 
+                               mutate_all(as.numeric) %>% as.matrix()
+
+hep_mat_numeric <- hep_mat_numeric <- clean_hepatitis %>% select_if(is.numeric) %>% as.matrix()
+```
+
+If your row names are contained in another column these can be added to the matrix using `rownames(mymatrix) <- my_dataframe$column_with_IDs`
+
+# Heatmaps
+
+When the values are comparable and all of the same type, heatmaps can give us a good view of our numeric data. R have a built in heatmap function (`heatmap`) that can cover basic heatmaps. Let's make a heatmap of based on the categorical variables. Check the `?heatmap` for help.
+
+```{r echo=TRUE, message=TRUE, warning=F, paged.print=TRUE, results='hold',collapse=TRUE}
+# The scale is set to "none" since the values are already comparable
+heatmap(hep_mat_factors, scale="none")
+```
+
+If the values are numeric but not comparable, these can be normalised by patient or by variable. Let's make a heatmap of the age and biochemistry values:
+
+```{r echo=TRUE, message=TRUE, warning=F, paged.print=TRUE, results='hold',collapse=TRUE}
+heatmap(hep_mat_numeric, scale="col")
+```
+
+There are many others [heatmap libraries](https://www.biostars.org/p/205417/). A well documented library for more complex heatmaps is [ComplexHeatmap](https://jokergoo.github.io/ComplexHeatmap-reference/book/)
+
+# Correlation is not causation... but it looks pretty nice
+
+Correlation plots are a special case of heatmap that summarises in a similar format the correlation between columns or rows. First using a numeric matrix we have to compute a correlation matrix, this can be done by measuring person correlation assuming linearity using the `cor()` function.
+
+```{r echo=TRUE, message=TRUE, warning=F, paged.print=TRUE, results='hold',collapse=TRUE}
+cormat <- cor(hep_mat_factors, use = "pairwise.complete.obs", method = "pearson")
+```
+With this correlation matrix we can have our correlation plot using the `library(corrplot)`
+
+```{r echo=TRUE, message=TRUE, warning=F, paged.print=TRUE, results='hold',collapse=TRUE}
+library(corrplot)
+corrplot(cormat, type = "lower", order = "AOE")
+```
+
+# Other advanced plots
+
+Here there are some guides to reproduce other types of plots that could be useful:
+
++ [UpSet plots](https://github.com/hms-dbmi/UpSetR): A new type of Venn Diagram
+
+![](https://cloud.githubusercontent.com/assets/12614369/8468576/18d5ef52-203c-11e5-9f5d-e034ec41c538.png)
+
++ [Principal Component Analysis (PCA) plots](http://www.sthda.com/english/articles/31-principal-component-methods-in-r-practical-guide/112-pca-principal-component-analysis-essentials/#interpreting-pca)
+
+## Bibliography
+
++ [Cheat sheets](https://rstudio.com/resources/cheatsheets/)
++ [R for Data Science](https://r4ds.had.co.nz/)
+
+
+

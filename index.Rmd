@@ -26,10 +26,9 @@ The main goal of this initiative is to **create a community of researchers inter
 
 Due to technological progress and availability of computing power, bigger and more complex data is collected every day. This paradigm shift challenges traditional methods to analyse data in ways that new tools are necessary to assess hypotheses and learn from vast amounts of information. Thankfully, computer science is more accessible than ever through a worldwide effort to bridge programming skills across fields and democratise data science through online learning.
 
-## Workshops
+## Kickstarter Workshops
 
 The following workshops are meant to **provide a basic set of skills assuming no prior programming experience**. The tool of choice will be mainly R due to its long tradition in statistical and biological analysis. Recent developments such as the `tidyverse` library have revitalised the use of R in the recent years. While Python won't be specifically treated on these workshops, the concepts learned here can be easily extrapolated.
-
 
 ###1. [Getting started](workshops/1_getting_started/t_getting_started.html)
 
@@ -39,6 +38,8 @@ The following workshops are meant to **provide a basic set of skills assuming no
 
 ###3. [Data wrangling](workshops/3_data_wrangling/t_data_wrangling.html)
 
-###4. [Visualisation and plotting](workshops/t_plotting.html)
+###4. [Data Visualization](workshops/4_data_visualization/t_data_visualization.html)
 
-*Work in progress*
+## Data Doctors 2020
+
+To be announced...

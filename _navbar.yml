@@ -13,8 +13,8 @@ left:
         href: workshops/2_r_basics/t_r_basics.html
       - text: "Data wrangling"
         href: workshops/3_data_wrangling/t_data_wrangling.html
-      - text: "Visualisation and plotting"
-        href: page-b.html
+      - text: "Data visualization"
+        href: workshops/4_data_visualization/t_data_visualization.html
 #      - text: "Page B"
 #        href: page-b.html
 #      - text: "Page B"
