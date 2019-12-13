@@ -215,6 +215,8 @@ library(corrplot)
 corrplot(cormat, type = "lower", order = "AOE")
 ```
 
+More help and options can be found in the [vignettes for the `corrplot` package](https://cran.r-project.org/web/packages/corrplot/vignettes/corrplot-intro.html).
+
 # Other advanced plots
 
 Here there are some guides to reproduce other types of plots that could be useful:
