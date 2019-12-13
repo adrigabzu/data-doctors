@@ -18,6 +18,32 @@ library(GGally)
 # 
 # clean_hepatitis %>% write_csv("./workshops/4_data_visualization/material/clean_hepatitis.csv")
 
+#### ToothGrowth
+
+# Logistic model to use as example
+model <- glm(supp ~ len + dose, family = "binomial", data = ToothGrowth)
+summary(model)
+
+# Extract the estimates and the confidence intervals into a tibble
+toforest <- cbind("Beta" = coef(model), confint(model)) %>%
+  # Rownames to specify in which column the row names will be stored
+  as_tibble(., rownames = "Variable")
+
+toforest %>% ggplot(aes(y = Variable, x = Beta, xmin = `2.5 %`, xmax = `97.5 %`)) +
+  # Add points for the estimates
+  geom_point(color = 'black') +
+  # Add horizontal errorbar using the xmin and xmax specified 
+  geom_errorbarh(height = .05) +
+  # Change the lower and upper limits of the plot
+  scale_x_continuous(limits=c(-5,5), name='Estimate') +
+  ylab('Variable') +
+  # Add vertical line
+  geom_vline(xintercept=0, color='black', linetype='dashed') +
+  theme_minimal()
+  
+
+
+#### Hepatitis
 clean_hepatitis <- read_csv("./workshops/4_data_visualization/material/clean_hepatitis.csv")
 clean_hepatitis <- clean_hepatitis %>% mutate_if(is.character, as.factor)
 

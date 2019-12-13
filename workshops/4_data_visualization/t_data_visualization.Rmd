@@ -42,6 +42,10 @@ Make art in R...
 ![https://www.data-to-art.com/](https://www.data-to-art.com/img/SIZE400/AS_harmonograph.png)
 From [Data to art in R](https://www.data-to-art.com/)
 
+And, of course, memes...
+
+<iframe width="560" height="315" align="center" src="https://www.youtube.com/embed/bgROqPjy_ag" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 Traditionally, scientists have mainly focused on data and ignored proper visualization practices. Nowadays, with bigger datasets, efficient visualization is needed not only to understand your data but to also convey results into a digestible snapshot.
 
 > Recommended [Why scientists need to be better at data visualization](https://www.knowablemagazine.org/article/mind/2019/science-data-visualization)
@@ -81,7 +85,7 @@ Despite not the topic of this workshop but visualising your data with `ggplot2` 
 
 ## An example
 
-Use the `ToothGrowth` dataset (remember you can use `as_tibble()` to see the dataframe):
+Use the `ToothGrowth` dataset (remember you can use `as_tibble()` to see the data frame):
 ```r
 # Built-in dataset: The Effect of Vitamin C on Tooth Growth in Guinea Pigs
 ?ToothGrowth
@@ -116,7 +120,39 @@ TG_summarised %>%
 
 Try yourself doing, for example, a boxplot or violin plot based on the original dataset `ToothGrowth` which is already available in R.
 
-> Tip: As seen in the previous code you might have to turn some continous variables into factors.
+> Tip: As seen in the previous code you might have to turn some continuous variables into factors.
+
+## Forest plot
+
+If you would like to visualize the estimates of your regression and see your very significant odds ratio, hazard ratios, etc. You can do that with ggplot. To show an example let's fit a very wrong but functional logistic model on the previous data to predict the class `supp`.
+
+```{r echo=TRUE, message=TRUE, warning=F, paged.print=TRUE, results='hold',collapse=TRUE}
+model <- glm(supp ~ len + dose, family = "binomial", data = ToothGrowth)
+summary(model)
+```
+
+Then we can turn the coefficients and confidence intervals into a table:
+```{r echo=TRUE, message=TRUE, warning=F, paged.print=TRUE, results='hold',collapse=TRUE}
+# Extract the estimates and the confidence intervals into a tibble
+toforest <- cbind("Beta" = coef(model), confint(model)) %>%
+  # Rownames to specify in which column the row names will be stored
+  as_tibble(., rownames = "Variable")
+```
+
+Finally let's feed ggplot of nice data:
+```{r echo=TRUE, message=TRUE, warning=F, paged.print=TRUE, results='hold',collapse=TRUE}
+toforest %>% ggplot(aes(y = Variable, x = Beta, xmin = `2.5 %`, xmax = `97.5 %`)) +
+  # Add points for the estimates
+  geom_point(color = 'black') +
+  # Add horizontal errorbar using the xmin and xmax specified 
+  geom_errorbarh(height = .05) +
+  # Change the lower and upper limits of the plot
+  scale_x_continuous(limits=c(-5,5), name='Estimate') +
+  ylab('Variable') +
+  # Add vertical line
+  geom_vline(xintercept=0, color='black', linetype='dashed') +
+  theme_minimal()
+```
 
 # Many options 
 
@@ -126,7 +162,7 @@ Try yourself doing, for example, a boxplot or violin plot based on the original 
 
 # Beyond ggplot2
 
-Computers like numbers, characters or others type of data can be confusing for some libraries. This means that sometimes we have to turn our data into a numeric matrix. If our we have characters columns these have to be transformed into a meaningful value or factorised. If they are factorised they can be converted into a numeric type.
+Computers like numbers, characters or another type of data can be confusing for some libraries. This means that sometimes we have to turn our data into a numeric matrix. If we have characters columns these have to be transformed into a meaningful value or factorised. If they are factorised they can be converted into a numeric type.
 
 Load the Hepatitis dataset and mutate the colums if they are of character type into factors:
 ```{r echo=TRUE, message=TRUE, warning=F, paged.print=TRUE, results='hold',collapse=TRUE}
@@ -150,7 +186,7 @@ If your row names are contained in another column these can be added to the matr
 
 # Heatmaps
 
-When the values are comparable and all of the same type, heatmaps can give us a good view of our numeric data. R have a built in heatmap function (`heatmap`) that can cover basic heatmaps. Let's make a heatmap of based on the categorical variables. Check the `?heatmap` for help.
+When the values are comparable and all of the same type, heatmaps can give us a good view of our numeric data. R has a built-in heatmap function (`heatmap`) that can cover basic heatmaps. Let's make a heatmap of based on the categorical variables. Check the `?heatmap` for help.
 
 ```{r echo=TRUE, message=TRUE, warning=F, paged.print=TRUE, results='hold',collapse=TRUE}
 # The scale is set to "none" since the values are already comparable
@@ -163,7 +199,7 @@ If the values are numeric but not comparable, these can be normalised by patient
 heatmap(hep_mat_numeric, scale="col")
 ```
 
-There are many others [heatmap libraries](https://www.biostars.org/p/205417/). A well documented library for more complex heatmaps is [ComplexHeatmap](https://jokergoo.github.io/ComplexHeatmap-reference/book/)
+There are many others [heatmap libraries](https://www.biostars.org/p/205417/). A well-documented library for more complex heatmaps is, guess the name...  [ComplexHeatmap](https://jokergoo.github.io/ComplexHeatmap-reference/book/)
 
 # Correlation is not causation... but it looks pretty nice
 
@@ -189,10 +225,10 @@ Here there are some guides to reproduce other types of plots that could be usefu
 
 + [Principal Component Analysis (PCA) plots](http://www.sthda.com/english/articles/31-principal-component-methods-in-r-practical-guide/112-pca-principal-component-analysis-essentials/#interpreting-pca)
 
++ Visualize gene sets with [clusterProfiler](https://yulab-smu.github.io/clusterProfiler-book/)
+![](https://yulab-smu.github.io/clusterProfiler-book/clusterProfiler_files/figure-html/Dotplotcap-1.png)
+
 ## Bibliography
 
 + [Cheat sheets](https://rstudio.com/resources/cheatsheets/)
 + [R for Data Science](https://r4ds.had.co.nz/)
-
-
-
