@@ -40,6 +40,7 @@ The following workshops are meant to **provide a basic set of skills assuming no
 
 ###4. [Data Visualization](workshops/4_data_visualization/t_data_visualization.html)
 
+
 ## Data Doctors 2020
 
 To be announced...
